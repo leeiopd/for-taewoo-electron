@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "win-build": "electron-builder -- --win --x64 --ia32"
   },
   "author": "migrationarc",
   "license": "ISC",
