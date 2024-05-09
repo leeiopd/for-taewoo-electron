@@ -1,0 +1,31 @@
+{
+  "name": "twWorkApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder",
+    "dist": "electron-builder"
+  },
+  "author": "migrationarc",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^30.0.3",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "winston": "^3.13.0",
+    "xlsx": "^0.18.5"
+  },
+  "build": {
+    "appId": "com.migrationarc.twWorkApp",
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

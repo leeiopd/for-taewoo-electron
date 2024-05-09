@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; connect-src 'self' https://api.odcloud.kr"
+    />
+    <title>사업자 상태 검색기 ver1.0</title>
+  </head>
+  
+  <body>
+    <h1>사업자 상태 검색기 ver 1.0</h1>
+    <h3>엑셀파일로 사업자 상태를 검색합니다.</h3>
+    <p>엑셀 파일을 업로드하고 결과를 다운로드하세요.</p>
+    <!-- 테이블, 선 보이게 -->
+    <input type="file" id="fileUpload" accept=".xls,.xlsx,.xlsm,.xlsb,.xltx,.xltm,.xlt,.xml,.xlam,.xla,.xlw,.xlr" />
+    <button id="downloadExcel" disabled>결과 다운로드</button>
+
+    <p>첨부된 엑셀파일을 사용해야 합니다. / 문의: leeiopd@gmail.com / migrationarc</p>
+
+  </body>
+  <script src="src/render.js"></script>
+  </style>
+</html>
