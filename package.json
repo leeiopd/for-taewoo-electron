@@ -1,13 +1,14 @@
 {
   "name": "twWorkApp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "app.js",
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder",
     "dist": "electron-builder",
-    "win-build": "electron-builder -- --win --x64 --ia32"
+    "build": "electron-builder build",
+    "win-build": "electron-builder --win --x64 --ia32"
   },
   "author": "migrationarc",
   "license": "ISC",
@@ -22,11 +23,25 @@
   },
   "build": {
     "appId": "com.migrationarc.twWorkApp",
-    "mac": {
-      "target": "dmg"
-    },
     "win": {
-      "target": "nsis"
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "language": "1042",
+      "include": "build/installer.nsh",
+      "shortcutName": "twWorkApp"
     }
   }
 }
