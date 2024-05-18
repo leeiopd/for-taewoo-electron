@@ -1,10 +1,10 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 600,
-    height: 250,
+    height: 300,
     webPreferences: {
       // 보안 정책 해제
       webSecurity: false,
@@ -18,6 +18,16 @@ const createWindow = () => {
   });
 
   win.loadFile("index.html");
+
+  //렌더러프로세스에서 보내는 메시지 처리
+  ipcMain.on("toggle-debug", (event, arg) => {
+    //디버기 툴 토글(on/off)
+    win.webContents.toggleDevTools();
+  });
+  ipcMain.on("refresh", (event, arg) => {
+    //페이지 갱신
+    win.reload();
+  });
 };
 
 app.whenReady().then(() => {

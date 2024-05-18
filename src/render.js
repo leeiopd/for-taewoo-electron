@@ -1,10 +1,24 @@
 const xlsx = require("xlsx");
+const { ipcRenderer } = require("electron");
 
 const API_URL =
   "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=";
 
 const fileUploadButton = document.getElementById("fileUpload");
 const saveDataButton = document.getElementById("downloadExcel");
+
+// 키보드 입력
+document.addEventListener("keydown", (event) => {
+  if (event.keyCode == 123) {
+    //F12
+    //메인프로세스로 toggle-debug 메시지 전송 (디버그 툴 토글시켜라)
+    ipcRenderer.send("toggle-debug", "an-argument");
+  } else if (event.keyCode == 116) {
+    //F5
+    //메인프로세스로 refresh 메시지 전송 (페이지를 갱신시켜라)
+    ipcRenderer.send("refresh", "an-argument");
+  }
+});
 
 try {
   let resultExcelData;
@@ -87,7 +101,11 @@ try {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    const b_no = data.map((item) => item["사업자등록번호"].toString());
+    const b_no = data.map((item) => {
+      const b_no = item["사업자등록번호"].toString();
+
+      return b_no.replace(/[^0-9]/g, "");
+    });
 
     const requestOptions = {
       method: "POST",
@@ -107,4 +125,6 @@ try {
   };
 } catch (error) {
   alert(`에러가 발생했습니다.\n${error}`);
+
+  console.log(error);
 }
