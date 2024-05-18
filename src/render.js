@@ -66,9 +66,10 @@ try {
 
     // data 와 resultData 를 비교하여 같은 b_no 를 찾아 resultData 의 데이터를 data 에 추가하는 로직
     data.forEach((item) => {
-      const resultItem = resultData.find(
-        (resultItem) => resultItem.b_no === item["사업자등록번호"].toString()
-      );
+      const resultItem = resultData.find((resultItem) => {
+        const file_b_no = item["사업자등록번호"].toString();
+        return resultItem.b_no === file_b_no.replace(/[^0-9]/g, "");
+      });
       if (resultItem) {
         item["사업자상태"] = resultItem.b_stt;
         item["폐업일자"] = resultItem.end_dt;
