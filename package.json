@@ -40,8 +40,7 @@
       "perMachine": true,
       "allowToChangeInstallationDirectory": true,
       "language": "1042",
-      "shortcutName": "사업자상태검색기_1.1.0",
-      "icon": "icon.ico"
+      "shortcutName": "사업자상태검색기_1.1.0"
     }
   }
 }
